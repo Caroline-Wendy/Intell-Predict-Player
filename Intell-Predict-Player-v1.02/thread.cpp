@@ -28,7 +28,7 @@ void HorrThread::run()
 bool HorrThread::processHorr(int& result)
 {
     const std::string file_name = m_fileName.toStdString();
-    const std::string normalization_name = "normalization.xml";
+    /*const std::string normalization_name = "normalization.xml";
     const std::string model_name = "horrorvideo.hvp";
     const std::string normalization_visual_name = "normalization_visual.xml";
     const std::string model_visual_name = "horrorvideo_visual.hvp";
@@ -54,7 +54,9 @@ bool HorrThread::processHorr(int& result)
     result = label_array[0];
     std::cout << "Result = " << result << std::endl;
     delete[] label_array;
-    label_array = nullptr;
+    label_array = nullptr;*/
+
+    result = horrorvideoprediction(file_name.c_str(), 100);
 
     return true;
 }

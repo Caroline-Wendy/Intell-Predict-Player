@@ -1,44 +1,3 @@
-/****************************************************************************
-**
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
-** Contact: http://www.qt-project.org/legal
-**
-** This file is part of the demonstration applications of the Qt Toolkit.
-**
-** $QT_BEGIN_LICENSE:LGPL$
-** Commercial License Usage
-** Licensees holding valid commercial Qt licenses may use this file in
-** accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and Digia.  For licensing terms and
-** conditions see http://qt.digia.com/licensing.  For further information
-** use the contact form at http://qt.digia.com/contact-us.
-**
-** GNU Lesser General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU Lesser
-** General Public License version 2.1 as published by the Free Software
-** Foundation and appearing in the file LICENSE.LGPL included in the
-** packaging of this file.  Please review the following information to
-** ensure the GNU Lesser General Public License version 2.1 requirements
-** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
-**
-** In addition, as a special exception, Digia gives you certain additional
-** rights.  These rights are described in the Digia Qt LGPL Exception
-** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
-**
-** GNU General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU
-** General Public License version 3.0 as published by the Free Software
-** Foundation and appearing in the file LICENSE.GPL included in the
-** packaging of this file.  Please review the following information to
-** ensure the GNU General Public License version 3.0 requirements will be
-** met: http://www.gnu.org/copyleft/gpl.html.
-**
-**
-** $QT_END_LICENSE$
-**
-***************************************************************************/
-
 #include <QtGui>
 
 #define SLIDER_RANGE 8
@@ -158,7 +117,7 @@ MediaPlayer::MediaPlayer() :
             m_AudioOutput(Phonon::VideoCategory),
             m_videoWidget(new MediaVideoWidget(this))
 {
-    setWindowTitle(tr("Video Prediction")); //设置标题
+    setWindowTitle(tr("Intelligent Prediction Player by C.L.Wang")); //设置标题
     setContextMenuPolicy(Qt::CustomContextMenu);
     m_videoWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -291,7 +250,7 @@ MediaPlayer::MediaPlayer() :
     connect(processPushButton, SIGNAL(clicked()), this, SLOT(processEvent()));
 
     QLabel *framesTextLabel = new QLabel(tr("Frames: ")); //帧数
-    frameNumLabel = new QLabel(tr("<font color=blue>Unset</font>"));
+    frameNumLabel = new QLabel(tr("Unknown"));
 
     QGridLayout *infoGridLayout = new QGridLayout;
     infoGridLayout->addWidget(processPushButton, 0, 0, 1, 2);
@@ -310,7 +269,6 @@ MediaPlayer::MediaPlayer() :
     playerlayout->addLayout(prcssLayout, 1);
 
     this->setFixedSize(960, 480);
-    //this->setFixedSize(this->width(), this->height()); //设置固定大小
     setLayout(playerlayout); //by me
 
     // Create menu bar:
@@ -1010,18 +968,21 @@ void MediaPlayer::processEvent()
         horrResultLabel->setText(tr("Unknown"));
         violResultLabel->setText(tr("Unknown"));
         if(pornCheckBox->isChecked()){
+            pornResultLabel->setText(tr("Processing"));
             processPorn();
         }else{
             pornResultLabel->setText(tr("Unknown"));
         }
 
         if(horrCheckBox->isChecked()){
+           horrResultLabel->setText(tr("Processing"));
            processHorr();
         }else{
             horrResultLabel->setText(tr("Unknown"));
         }
 
         if(violCheckBox->isChecked()){
+            violResultLabel->setText(tr("Processing"));
             processViol();
         }else{
             violResultLabel->setText(tr("Unknown"));
