@@ -1,6 +1,6 @@
 TEMPLATE = app
 DEPENDPATH += . build src ui
-TARGET = "WangChenLong"
+TARGET = "RenTianTian"
 
 QT += phonon
 
